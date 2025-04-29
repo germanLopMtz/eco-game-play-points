@@ -16,10 +16,10 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="ghost"
+      variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="rounded-full"
+      className="rounded-full border-0 bg-background/10 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground transition-all duration-300"
       aria-label="Toggle theme"
     >
       <Sun
