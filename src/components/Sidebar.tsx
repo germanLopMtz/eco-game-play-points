@@ -9,13 +9,13 @@ import {
   Mail,
   ChevronRight,
   LogOut,
-  User
+  User,
+  BarChart2
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const menuItems = [
-  { label: "Inicio", icon: Home, href: "/dashboard/home" },
-  { label: "Cómo Funciona", icon: Info, href: "/dashboard/how-it-works" },
+  { label: "Mi Progreso", icon: BarChart2, href: "/dashboard" },
   { label: "Mapa", icon: Map, href: "/dashboard/map" },
   { label: "Aliados", icon: Users, href: "/dashboard/partners" },
   { label: "Contenedor 3D", icon: Box, href: "/dashboard/model" },
@@ -48,8 +48,8 @@ const Sidebar = () => {
               <User className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <p className="font-medium">Usuario</p>
-              <p className="text-sm text-gray-500">usuario@ejemplo.com</p>
+              <p className="font-medium">German Lopez</p>
+              <p className="text-sm text-gray-500">germanlopez@gmail.com</p>
             </div>
           </div>
         </div>
