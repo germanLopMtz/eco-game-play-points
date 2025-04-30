@@ -1,5 +1,5 @@
-
 import { Button } from "@/components/ui/button";
+import logo from "../../img/logo.png";
 
 const Hero = () => {
   return (
@@ -36,11 +36,13 @@ const Hero = () => {
             <div className="absolute inset-2 bg-white/60 rounded-2xl backdrop-blur-sm flex items-center justify-center">
               <div className="text-center p-6">
                 <div className="w-32 h-32 mx-auto mb-4 relative">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-secondary to-accent animate-bounce-slow">
-                    <div className="absolute inset-2 rounded-full bg-white flex items-center justify-center">
-                      <span className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">
-                        EG
-                      </span>
+                  <div className="absolute inset-0 rounded-full bg-green-500 animate-bounce-slow">
+                    <div className="absolute inset-2 rounded-full bg-white flex items-center justify-center overflow-hidden">
+                      <img 
+                        src={logo}
+                        alt="EcoPoint Logo"
+                        className="w-full h-full object-contain p-2"
+                      />
                     </div>
                   </div>
                 </div>
