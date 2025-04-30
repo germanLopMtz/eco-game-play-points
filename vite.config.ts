@@ -19,4 +19,14 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  assetsInclude: ['**/*.glb', '**/*.gltf', '**/*.png', '**/*.jpg', '**/*.jpeg'],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'three': ['three', '@react-three/fiber', '@react-three/drei']
+        }
+      }
+    }
+  }
 }));
