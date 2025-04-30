@@ -1,78 +1,77 @@
-
-import { 
-  Award, 
-  CirclePlay, 
-  Gift, 
-  Trash2
-} from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Recycle, Leaf, Gift } from "lucide-react";
 
 const HowItWorks = () => {
-  const steps = [
-    {
-      icon: <Trash2 size={48} className="text-primary" />,
-      title: "Deposita tu basura",
-      description: "Acércate a uno de nuestros contenedores inteligentes y deposita tu basura correctamente"
-    },
-    {
-      icon: <CirclePlay size={48} className="text-secondary" />,
-      title: "Juega un minijuego",
-      description: "Los contenedores cuentan con divertidos juegos como máquina de garra o ruleta"
-    },
-    {
-      icon: <Award size={48} className="text-accent" />,
-      title: "Gana puntos ecológicos",
-      description: "Cada vez que juegas, acumulas puntos en tu cuenta personal"
-    },
-    {
-      icon: <Gift size={48} className="text-primary" />,
-      title: "Canjea recompensas",
-      description: "Usa tus puntos para obtener descuentos y premios en nuestros establecimientos aliados"
-    }
-  ];
-
   return (
-    <section id="how-it-works" className="section-container bg-gradient-to-br from-green-50 to-white">
-      <h2 className="section-title">
-        ¿Cómo <span className="text-primary">Funciona</span>?
-      </h2>
-      
-      <div className="mt-12 relative">
-        {/* Connection Line */}
-        <div className="hidden md:block absolute left-1/2 top-24 bottom-24 w-1 bg-gradient-to-b from-primary via-secondary to-accent -translate-x-1/2 z-0" />
-        
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16">
-          {steps.map((step, index) => (
-            <div key={index} className={`relative z-10 ${
-              index % 2 === 1 ? "md:translate-y-24" : ""
-            }`}>
-              <div className="eco-card flex flex-col items-center text-center p-8 bg-white">
-                <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-6">
-                  {step.icon}
-                </div>
-                <h3 className="text-2xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </div>
-              
-              {/* Numbered Circle */}
-              <div className="absolute -top-5 -left-2 w-10 h-10 rounded-full bg-accent flex items-center justify-center text-white font-bold text-lg">
-                {index + 1}
-              </div>
-            </div>
-          ))}
+    <section id="how-it-works" className="py-20 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            ¿Cómo Funciona?
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Sigue estos simples pasos para comenzar a reciclar y ganar puntos
+          </p>
         </div>
-      </div>
-      
-      <div className="mt-20 text-center max-w-2xl mx-auto">
-        <h3 className="text-2xl font-semibold mb-4">
-          ¡Es así de sencillo!
-        </h3>
-        <p className="text-gray-600 mb-8">
-          Nuestros contenedores inteligentes están revolucionando la forma en que interactuamos con los residuos. 
-          Convirtiendo una tarea diaria en una experiencia divertida y gratificante.
-        </p>
-        <button className="eco-button bg-secondary text-white hover:bg-secondary/90">
-          Busca el contenedor más cercano
-        </button>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Recycle className="h-6 w-6 text-primary" />
+              </div>
+              <CardTitle>1. Recicla</CardTitle>
+              <CardDescription>
+                Separa tus residuos y deposítalos en los contenedores correspondientes
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Utiliza los contenedores de colores para separar papel, plástico, vidrio y otros materiales reciclables.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Leaf className="h-6 w-6 text-primary" />
+              </div>
+              <CardTitle>2. Escanea</CardTitle>
+              <CardDescription>
+                Escanea el código QR del contenedor con tu aplicación
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Cada vez que recicles, escanea el código QR del contenedor para registrar tu contribución.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                <Gift className="h-6 w-6 text-primary" />
+              </div>
+              <CardTitle>3. Gana Puntos</CardTitle>
+              <CardDescription>
+                Acumula puntos por cada reciclaje y canjea recompensas
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-gray-600">
+                Por cada reciclaje recibirás puntos que podrás canjear por descuentos, productos y más.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="text-center mt-24">
+          <p className="text-2xl font-semibold text-gray-900">
+            ¡Es así de sencillo!
+          </p>
+        </div>
       </div>
     </section>
   );

@@ -22,7 +22,17 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
+    };
+    
+    checkAuth();
+    window.addEventListener('storage', checkAuth);
+    return () => window.removeEventListener('storage', checkAuth);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +61,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
+    setIsAuthenticated(false);
     navigate('/');
   };
 
@@ -79,20 +90,11 @@ const Navbar = () => {
             </a>
           ))}
           {isAuthenticated ? (
-            <>
-              <Link to="/dashboard">
-                <Button variant="ghost" className="text-gray-700 hover:text-primary">
-                  Mi Progreso
-                </Button>
-              </Link>
-              <Button 
-                variant="ghost" 
-                onClick={handleLogout}
-                className="text-gray-700 hover:text-primary"
-              >
-                Cerrar Sesión
+            <Link to="/dashboard">
+              <Button className="bg-primary hover:bg-primary/90">
+                Mi Progreso
               </Button>
-            </>
+            </Link>
           ) : (
             <Link to="/login">
               <Button className="bg-primary hover:bg-primary/90">
@@ -126,23 +128,11 @@ const Navbar = () => {
               </a>
             ))}
             {isAuthenticated ? (
-              <>
-                <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="text-gray-700 hover:text-primary w-full">
-                    Mi Progreso
-                  </Button>
-                </Link>
-                <Button 
-                  variant="ghost" 
-                  onClick={() => {
-                    handleLogout();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="text-gray-700 hover:text-primary w-full"
-                >
-                  Cerrar Sesión
+              <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="bg-primary hover:bg-primary/90 w-full">
+                  Mi Progreso
                 </Button>
-              </>
+              </Link>
             ) : (
               <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="bg-primary hover:bg-primary/90 w-full">
