@@ -41,7 +41,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center">
           <span className="text-xl md:text-2xl font-bold text-primary">
-            <span className="text-secondary">Eco</span>Game
+            <span className="text-secondary">Eco</span>Point
           </span>
         </div>
         
