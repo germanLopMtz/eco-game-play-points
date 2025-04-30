@@ -7,14 +7,14 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-2xl font-bold mb-4">
               <span className="text-secondary">Eco</span>
-              <span className="text-primary">Game</span>
+              <span className="text-primary">Point</span>
             </h3>
             <p className="mb-6 max-w-md text-gray-300">
               Transformando la forma en que interactuamos con nuestros residuos. 
               Cuida tu ciudad, juega y gana mientras contribuyes al medio ambiente.
             </p>
             <div className="flex space-x-4">
-              {["facebook", "twitter", "instagram", "linkedin"].map((social) => (
+              {["facebook", "x", "instagram", "youtube"].map((social) => (
                 <a 
                   key={social}
                   href="#"
@@ -36,7 +36,7 @@ const Footer = () => {
               {[
                 { label: "Inicio", href: "#home" },
                 { label: "Cómo Funciona", href: "#how-it-works" },
-                { label: "Mi Progreso", href: "#progress" },
+                { label: "Contenedor", href: "#progress" },
                 { label: "Mapa", href: "#map" },
                 { label: "Empresas Aliadas", href: "#partners" },
               ].map((link) => (
@@ -55,9 +55,9 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4 text-lg">Contacto</h4>
             <ul className="space-y-2 text-gray-400">
-              <li>contacto@ecogame.com</li>
+              <li>contacto@ecopoint.com</li>
               <li>+123 456 7890</li>
-              <li>Av. Ecológica 123, Ciudad Verde</li>
+              <li>Av. Tecnologico, Hermosillo</li>
             </ul>
             
             <div className="mt-6">
@@ -85,7 +85,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
-          <p>© 2025 EcoGame. Todos los derechos reservados.</p>
+          <p>© 2025 EcoPoint. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

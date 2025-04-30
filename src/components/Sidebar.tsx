@@ -42,9 +42,7 @@ const Sidebar = ({ onCollapse }: SidebarProps) => {
   };
 
   return (
-    <div className={`fixed left-0 top-0 h-full bg-white shadow-lg transition-all duration-300 ${
-      isCollapsed ? 'w-16' : 'w-64'
-    }`}>
+    <div className="h-full">
       <div className="flex flex-col h-full">
         <div className="p-4 border-b flex items-center justify-between">
           {!isCollapsed && (
@@ -81,7 +79,7 @@ const Sidebar = ({ onCollapse }: SidebarProps) => {
           </div>
         )}
         
-        <nav className="flex-1 p-4 space-y-2">
+        <nav className="flex-1 overflow-y-auto">
           {menuItems.map((item) => (
             <Link key={item.href} to={item.href}>
               <Button
