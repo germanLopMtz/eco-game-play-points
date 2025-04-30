@@ -1,5 +1,5 @@
-
 import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 
@@ -11,15 +11,18 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Inicio", href: "#home" },
   { label: "Cómo Funciona", href: "#how-it-works" },
-  { label: "Mi Progreso", href: "#progress" },
   { label: "Mapa", href: "#map" },
   { label: "Aliados", href: "#partners" },
+  { label: "Contenedor 3D", href: "#model" },
   { label: "Contacto", href: "#contact" }
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,11 +31,28 @@ const Navbar = () => {
       } else {
         setIsScrolled(false);
       }
+
+      const sections = ['home', 'how-it-works', 'map', 'partners', 'model', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element && scrollPosition >= element.offsetTop && 
+            scrollPosition < element.offsetTop + element.offsetHeight) {
+          setActiveSection(section);
+          break;
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    navigate('/');
+  };
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -51,14 +71,35 @@ const Navbar = () => {
             <a
               key={item.href}
               href={item.href}
-              className="font-medium text-gray-700 hover:text-primary transition-colors"
+              className={`font-medium transition-colors ${
+                activeSection === item.href.replace('#', '') ? 'text-primary' : 'text-gray-700 hover:text-primary'
+              }`}
             >
               {item.label}
             </a>
           ))}
-          <Button className="bg-primary hover:bg-primary/90">
-            Iniciar Sesión
-          </Button>
+          {isAuthenticated ? (
+            <>
+              <Link to="/dashboard">
+                <Button variant="ghost" className="text-gray-700 hover:text-primary">
+                  Mi Progreso
+                </Button>
+              </Link>
+              <Button 
+                variant="ghost" 
+                onClick={handleLogout}
+                className="text-gray-700 hover:text-primary"
+              >
+                Cerrar Sesión
+              </Button>
+            </>
+          ) : (
+            <Link to="/login">
+              <Button className="bg-primary hover:bg-primary/90">
+                Iniciar Sesión
+              </Button>
+            </Link>
+          )}
         </div>
         
         {/* Mobile Menu Button */}
@@ -84,9 +125,31 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button className="bg-primary hover:bg-primary/90 w-full">
-              Iniciar Sesión
-            </Button>
+            {isAuthenticated ? (
+              <>
+                <Link to="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="text-gray-700 hover:text-primary w-full">
+                    Mi Progreso
+                  </Button>
+                </Link>
+                <Button 
+                  variant="ghost" 
+                  onClick={() => {
+                    handleLogout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-gray-700 hover:text-primary w-full"
+                >
+                  Cerrar Sesión
+                </Button>
+              </>
+            ) : (
+              <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="bg-primary hover:bg-primary/90 w-full">
+                  Iniciar Sesión
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       )}
