@@ -18,7 +18,7 @@ const ModelSection = () => {
             <CardContent>
               <div className="rounded-lg overflow-hidden">
                 <ModelViewer 
-                  modelPath="/models/Recycling_Reward_Bin_0430043010_texture.glb" 
+                  modelPath="/models/modelo3Dprototipo.glb" 
                   className="w-full h-[400px]"
                 />
               </div>
