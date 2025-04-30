@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import logo from "../../img/logo.png";
+import logo from "@/img/logo.png";
 
 const Hero = () => {
   return (
@@ -31,7 +31,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="relative order-first md:order-last mx-auto w-full max-w-md animate-scale-in">
+        <div className="relative">
           <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 flex items-center justify-center overflow-hidden shadow-2xl">
             <div className="absolute inset-2 bg-white/60 rounded-2xl backdrop-blur-sm flex items-center justify-center">
               <div className="text-center p-6">
