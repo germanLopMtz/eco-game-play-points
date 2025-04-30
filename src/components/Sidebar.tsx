@@ -11,6 +11,7 @@ import {
   LogOut,
   User
 } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const menuItems = [
   { label: "Inicio", icon: Home, href: "/dashboard/home" },
@@ -33,9 +34,12 @@ const Sidebar = () => {
     <div className="fixed left-0 top-0 h-full w-64 bg-white shadow-lg">
       <div className="flex flex-col h-full">
         <div className="p-4 border-b">
-          <span className="text-xl font-bold text-primary">
-            <span className="text-secondary">Eco</span>Point
-          </span>
+          <div className="flex items-center space-x-2">
+            <img src={logo} alt="EcoPoint Logo" className="h-8 w-auto" />
+            <span className="text-xl font-bold text-primary">
+              <span className="text-secondary">Eco</span>Point
+            </span>
+          </div>
         </div>
 
         <div className="p-4 border-b">

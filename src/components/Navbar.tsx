@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 interface NavItem {
   label: string;
@@ -70,7 +71,8 @@ const Navbar = () => {
       isScrolled ? "bg-white/95 shadow-md py-2" : "bg-transparent py-4"
     }`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <div className="flex items-center">
+        <div className="flex items-center space-x-2">
+          <img src={logo} alt="EcoPoint Logo" className="h-8 w-auto" />
           <span className="text-xl md:text-2xl font-bold text-primary">
             <span className="text-secondary">Eco</span>Point
           </span>
