@@ -16,17 +16,18 @@ export default defineConfig(({ mode }) => ({
   ].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   assetsInclude: ['**/*.glb', '**/*.gltf', '**/*.png', '**/*.jpg', '**/*.jpeg'],
   build: {
+    outDir: 'dist',
+    sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'three': ['three', '@react-three/fiber', '@react-three/drei']
-        }
+        manualChunks: undefined,
       }
     }
-  }
+  },
+  base: '/',
 }));
